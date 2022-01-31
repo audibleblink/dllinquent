@@ -7,7 +7,7 @@ import (
 
 	"golang.org/x/sys/windows"
 
-	"github.com/audibleblink/rpcls/pkg/memutils"
+	"github.com/audibleblink/memutils"
 )
 
 type matchFn func(windows.LDR_DATA_TABLE_ENTRY, *Result) bool

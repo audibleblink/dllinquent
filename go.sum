@@ -1,8 +1,6 @@
-github.com/Binject/debug v0.0.0-20210312092933-6277045c2fdf h1:Cx4YJvjPZD91xiffqJOq8l3j1YKcvx3+8duqq7DX9gY=
-github.com/Binject/debug v0.0.0-20210312092933-6277045c2fdf/go.mod h1:QzgxDLY/qdKlvnbnb65eqTedhvQPbaSP2NqIbcuKvsQ=
-github.com/audibleblink/getsystem v0.1.1/go.mod h1:JAoOsoqmC5st/9PtYBmTiP/5c7Bi75HhzXgHUSMJuuo=
-github.com/audibleblink/rpcls v0.0.0-20210822225556-d855a04ad117 h1:BowNki8waMRm5GKZwVFcGhV5XC4p6YyTcBGenwwKZwc=
-github.com/audibleblink/rpcls v0.0.0-20210822225556-d855a04ad117/go.mod h1:nBqwFaT1Ga7nPaTEtHNzd1wYzMJxdWJOia6XZ2ws0Mg=
-golang.org/x/sys v0.0.0-20210820121016-41cdb8703e55/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+github.com/Binject/debug v0.0.0-20211007083345-9605c99179ee h1:neBp9wDYVY4Uu1gGlrL+IL4JeZslz+hGEAjBXGAPWak=
+github.com/Binject/debug v0.0.0-20211007083345-9605c99179ee/go.mod h1:QzgxDLY/qdKlvnbnb65eqTedhvQPbaSP2NqIbcuKvsQ=
+github.com/audibleblink/memutils v0.0.0-20220131033107-5c8ecd8b8756 h1:w2WYSk/segyB9UNBwg1Ca9+9rZFHyQeTzAgMukhxVZc=
+github.com/audibleblink/memutils v0.0.0-20220131033107-5c8ecd8b8756/go.mod h1:J7jCyGzYDfu33IKNbJ97GxPXsbv7b/kCSc78NVijZNI=
 golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27 h1:XDXtA5hveEEV8JB2l7nhMTp3t3cHp9ZpwcdjqyEWLlo=
 golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
