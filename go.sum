@@ -2,5 +2,7 @@ github.com/Binject/debug v0.0.0-20211007083345-9605c99179ee h1:neBp9wDYVY4Uu1gGl
 github.com/Binject/debug v0.0.0-20211007083345-9605c99179ee/go.mod h1:QzgxDLY/qdKlvnbnb65eqTedhvQPbaSP2NqIbcuKvsQ=
 github.com/audibleblink/memutils v0.0.0-20220131033107-5c8ecd8b8756 h1:w2WYSk/segyB9UNBwg1Ca9+9rZFHyQeTzAgMukhxVZc=
 github.com/audibleblink/memutils v0.0.0-20220131033107-5c8ecd8b8756/go.mod h1:J7jCyGzYDfu33IKNbJ97GxPXsbv7b/kCSc78NVijZNI=
+github.com/audibleblink/memutils v0.0.1 h1:J4oC5xzK1eItZSruHOmIpxHIo0UfEC05BncsLexanm4=
+github.com/audibleblink/memutils v0.0.1/go.mod h1:J7jCyGzYDfu33IKNbJ97GxPXsbv7b/kCSc78NVijZNI=
 golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27 h1:XDXtA5hveEEV8JB2l7nhMTp3t3cHp9ZpwcdjqyEWLlo=
 golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
