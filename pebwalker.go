@@ -8,6 +8,7 @@ import (
 	"golang.org/x/sys/windows"
 )
 
+// LdrDataTableEntry64 is an expanded version of windows.LdrDataTableEntry (contains additional undocumented structures)
 type LdrDataTableEntry64 struct {
 	InOrderLinks               windows.LIST_ENTRY
 	InMemoryOrderLinks         windows.LIST_ENTRY
@@ -18,9 +19,9 @@ type LdrDataTableEntry64 struct {
 	FullDllName                windows.NTUnicodeString
 	BaseDllName                windows.NTUnicodeString
 	Flags                      uint32
-	LoadCount                  uint16 // named ObseleteLoadCount OS6.2+
+	LoadCount                  uint16
 	TlsIndex                   uint16
-	HashLinks                  [16]byte // increase by PVOID+ULONG if <OS6.2
+	HashLinks                  [16]byte
 }
 
 // Dll serves as a representation of the currently iterated module in a PebWalker.
@@ -37,7 +38,7 @@ type Dll struct {
 	LdrDataTableEntry LdrDataTableEntry64
 }
 
-// PebWalker create a ioutil.Scanner-like interface for walking loaded modules in
+// PebWalker create a bufio.Scanner-like interface for walking loaded modules in
 // a process' PEB
 type PebWalker struct {
 	// PEB holds the PEB for the process provided to NewPebWalker

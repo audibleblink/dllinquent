@@ -9,6 +9,23 @@ import (
 	"golang.org/x/sys/windows"
 )
 
+// FindInProcess will walk the PEB of a given process and search for the provided dll name and function.
+// Dll names must end with '.dll' and functionName is case-sensitive
+func FindInProcess(pid int, dllName, functionName string) (dll Dll, err error) {
+
+	dll = Dll{
+		DllBaseName: dllName,
+		FuncName:    functionName,
+	}
+
+	err = findDll(pid, &dll)
+	if err != nil {
+		return
+	}
+
+	return
+}
+
 // FindInProcesses will enumerate all current process, searching for provided function and returns a map of Process
 // structs as keys and Dll structs as keys
 func FindInProcesses(dllName, funcionName string) (funcAddrs map[memutils.WindowsProcess]Dll, err error) {
@@ -25,23 +42,6 @@ func FindInProcesses(dllName, funcionName string) (funcAddrs map[memutils.Window
 		}
 		funcAddrs[proc] = dll
 	}
-	return
-}
-
-// FindInProcess will walk the PEB of a given process and search for the provided dll name and function.
-// Dll names must end with '.dll' and functionName is case-sensitive
-func FindInProcess(pid int, dllName, functionName string) (dll Dll, err error) {
-
-	dll = Dll{
-		DllBaseName: dllName,
-		FuncName:    functionName,
-	}
-
-	err = findDll(pid, &dll)
-	if err != nil {
-		return
-	}
-
 	return
 }
 
