@@ -71,6 +71,10 @@ func findDll(pid int, dll *Dll) (err error) {
 			}
 
 			dll.FuncOffset = uint64(dll.FuncAddress) - dll.DllBaseAddr
+
+			if dll.DllBaseName == "" {
+				dll.DllBaseName = currDll.DllBaseName
+			}
 			return
 		}
 	}
