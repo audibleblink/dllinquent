@@ -1,4 +1,4 @@
-// dllinquent provides the ability to search through loaded modules and functions
+// Package dllinquent provides the ability to search through loaded modules and functions
 // withing a process' PEB
 package dllinquent
 

@@ -42,8 +42,10 @@ type Dll struct {
 // a process' PEB
 type PebWalker struct {
 	// PEB holds the PEB for the process provided to NewPebWalker
-	PEB      windows.PEB
-	handle   windows.Handle
+	PEB windows.PEB
+	// Handle holds the Handle to the process provided to NewPebWalker
+	Handle windows.Handle
+
 	head     LdrDataTableEntry64
 	current  LdrDataTableEntry64
 	fullName string
@@ -56,12 +58,12 @@ func NewPebWalker(pid int) (pw PebWalker, err error) {
 	pw = PebWalker{}
 
 	perms := windows.PROCESS_QUERY_INFORMATION | windows.PROCESS_VM_READ
-	pw.handle, err = memutils.HandleForPid(pid, perms)
+	pw.Handle, err = memutils.HandleForPid(pid, perms)
 	if err != nil {
 		return
 	}
 
-	pw.PEB, err = memutils.GetPEB(pw.handle)
+	pw.PEB, err = memutils.GetPEB(pw.Handle)
 	if err != nil {
 		return
 	}
@@ -76,9 +78,7 @@ func NewPebWalker(pid int) (pw PebWalker, err error) {
 // Walk returns true as long as there is Flink (Forward Link) in the Linked List
 // of loaded modules
 func (pw *PebWalker) Walk() bool {
-
 	pw.current = pw.next()
-
 	if pw.err != nil {
 		return false
 	}
@@ -87,7 +87,6 @@ func (pw *PebWalker) Walk() bool {
 		pw.err = io.EOF
 		return false
 	}
-
 	return true
 }
 
@@ -109,7 +108,7 @@ func (pw PebWalker) Err() error {
 func (pw *PebWalker) next() (head LdrDataTableEntry64) {
 
 	err := memutils.ReadMemory(
-		pw.handle,
+		pw.Handle,
 		unsafe.Pointer(pw.head.InMemoryOrderLinks.Flink),
 		unsafe.Pointer(&pw.head.InMemoryOrderLinks.Flink),
 		uint32(unsafe.Sizeof(pw.head)),
@@ -122,7 +121,7 @@ func (pw *PebWalker) next() (head LdrDataTableEntry64) {
 	pw.current = pw.head
 
 	if pw.head.BaseDllName.Length != 0 {
-		pw.fullName, err = memutils.PopulateStrings(pw.handle, &pw.head.FullDllName)
+		pw.fullName, err = memutils.PopulateStrings(pw.Handle, &pw.head.FullDllName)
 		if err != nil {
 			pw.err = err
 			return
