@@ -58,7 +58,8 @@ func findDll(pid int, dll *Dll) (err error) {
 	}
 
 	for walker.Walk() {
-		currentDllName := strings.ToLower(walker.Dll().DllFullName)
+		currentDll := walker.Dll()
+		currentDllName := strings.ToLower(currentDll.DllFullName)
 		dll.DllBaseName = strings.ToLower(dll.DllBaseName)
 
 		if strings.HasSuffix(currentDllName, dll.DllBaseName) {
@@ -75,6 +76,8 @@ func findDll(pid int, dll *Dll) (err error) {
 			if dll.DllBaseName == "" {
 				dll.DllBaseName = currDll.DllBaseName
 			}
+
+			dll.LdrDataTableEntry = currDll.LdrDataTableEntry
 			return
 		}
 	}
